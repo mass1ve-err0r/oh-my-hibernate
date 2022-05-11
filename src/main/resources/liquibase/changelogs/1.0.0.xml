@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <!--
+        This is a 'changeSet', a definition of change.
+
+        Here you can perform all the basic CRUD operations alongside complex ones,
+        if desired.
+    -->
+    <changeSet id="1.0.0" author="Saadat Baig">
+        <comment>Creating the base structure.</comment>
+        <!-- creating the table 'Benutzer'. -->
+        <createTable tableName="BENUTZER">
+            <!-- create a column of type bigint, which auto-increments and is our primary key.m-->
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <!--
+                nvarchar is just simply the string type.
+                Please refer to the Java SQL types documentation.
+            -->
+            <column name="name" type="nvarchar">
+                <constraints nullable="true"/>
+            </column>
+            <column name="address" type="nvarchar">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
