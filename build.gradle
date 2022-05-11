@@ -1,0 +1,59 @@
+/**
+ * This is the buildfile for Gradle.
+ *
+ * Here you basically define 'what' kind of programm you're creating as well as
+ *  it's potential dependencies.
+ *
+ * Plugins add new tasks to your build. Please refer to the Gradle documentation for further
+ *  information on each basic plugin type & the general idea of plugins.
+ */
+plugins {
+    id 'java'
+    id 'application'
+}
+
+/**
+ * Here you define which repositories a dependency can potentially be downloaded from.
+ */
+repositories {
+    mavenCentral()
+}
+
+/**
+ * Basic metadata such as base package name & version
+ */
+group 'dev.saadat'
+version '1.0.0'
+
+/**
+ * Since we're using the 'application' plugin, we can define an entrypoint.
+ */
+application {
+    mainClass = 'dev.saadat.datenbanken.Datenbanken'
+}
+
+/**
+ * There are packages upon this program relies on.
+ */
+dependencies {
+    // The actual database we will use: H2
+    implementation group: 'com.h2database', name: 'h2', version: '2.1.212'
+
+    // Hibernate ORM & A solid connection pool: Hikari-CP
+    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.6.8.Final'
+    implementation group: 'org.hibernate', name: 'hibernate-hikaricp', version: '5.6.8.Final'
+
+    // Liquibase Database Versioning
+    implementation group: 'org.liquibase', name: 'liquibase-core', version: '4.9.1'
+
+    // Test Framework
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+/**
+ * Telling Gradle to use JUnit as test framework.
+ */
+test {
+    useJUnitPlatform()
+}
