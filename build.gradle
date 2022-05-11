@@ -57,3 +57,12 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+/**
+ * Automagically purge the created db for a new clean run.
+ */
+run {
+    doLast {
+        delete('datenbank.mv.db', 'datenbank.trace.db')
+    }
+}
