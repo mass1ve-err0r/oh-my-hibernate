@@ -25,12 +25,12 @@ public class User {
     public String name;
 
     @Column(name = "address")
-    public String address;
+    public Long address;
 
 
     public User() { }
 
-    public User(String name, String address) {
+    public User(String name, Long address) {
         this.name = name;
         this.address = address;
     }
@@ -50,7 +50,7 @@ public class User {
             return this;
         }
 
-        public Builder address(String address) {
+        public Builder address(Long address) {
             this.user.address = address;
             return this;
         }
